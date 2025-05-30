@@ -13,9 +13,10 @@ const board = ref<Board>([
 ]);
 
 const xGoesFirst = ref(true);
-const currentPlayer = computed(() => (xGoesFirst.value
-  ? (moveCount.value % 2 === 0 ? "X" : "O")
-  : (moveCount.value % 2 === 0 ? "O" : "X"))
+const currentPlayer = computed<"X" | "O">(() =>
+  xGoesFirst.value
+    ? (moveCount.value % 2 === 0 ? "X" : "O")
+    : (moveCount.value % 2 === 0 ? "O" : "X")
 );
 const gameOver = ref(false);
 const winner = ref(null);
