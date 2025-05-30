@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from "vue";
 
 // Board is a 3x3 array, null = empty, "X" or "O"
