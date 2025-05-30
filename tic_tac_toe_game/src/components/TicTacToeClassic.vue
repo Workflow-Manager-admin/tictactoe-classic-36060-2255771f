@@ -18,8 +18,9 @@ const currentPlayer = computed<"X" | "O">(() =>
     ? (moveCount.value % 2 === 0 ? "X" : "O")
     : (moveCount.value % 2 === 0 ? "O" : "X")
 );
-const gameOver = ref(false);
-const winner = ref(null);
+import type { Ref } from "vue";
+const gameOver: Ref<boolean> = ref(false);
+const winner: Ref<"X" | "O" | null> = ref(null);
 const moveCount = computed(() =>
   board.value.flat().filter((x) => x !== null).length
 );
