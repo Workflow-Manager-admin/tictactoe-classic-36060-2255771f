@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
-// Board is a 3x3 array, null = empty, "X" or "O"
-const board = ref([
+/**
+ * Board is a 3x3 array where each cell is "X", "O", or null
+ */
+type Cell = "X" | "O" | null;
+type Board = Cell[][];
+const board = ref<Board>([
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -19,10 +23,15 @@ const moveCount = computed(() =>
   board.value.flat().filter((x) => x !== null).length
 );
 
+/**
+ * Handle a click on the board at a specific cell.
+ * @param row Row index (0..2)
+ * @param col Col index (0..2)
+ */
 // PUBLIC_INTERFACE
-function handleCellClick(row, col) {
+function handleCellClick(row: number, col: number): void {
   if (gameOver.value || board.value[row][col]) return;
-  board.value[row][col] = currentPlayer.value;
+  board.value[row][col] = currentPlayer.value as Cell;
   checkGameState();
 }
 
