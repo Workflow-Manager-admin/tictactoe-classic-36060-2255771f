@@ -56,11 +56,11 @@ function switchFirstPlayer() {
 // PUBLIC_INTERFACE
 function checkGameState() {
   // Rows, columns, diagonals
-  const lines = [
+  const lines: Cell[][] = [
     // Rows
     ...board.value,
     // Columns
-    [0, 1, 2].map((i) => [board.value[0][i], board.value[1][i], board.value[2][i]]),
+    ...[0, 1, 2].map((i) => [board.value[0][i], board.value[1][i], board.value[2][i]]),
     // Diagonal TL-BR
     [board.value[0][0], board.value[1][1], board.value[2][2]],
     // Diagonal BL-TR
